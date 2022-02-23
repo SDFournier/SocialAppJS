@@ -1,0 +1,45 @@
+
+<div class="container">
+    <div class="row">
+        <!-- ============================================ BANDEJA DE SALIDA ====================================================== -->
+        <div class="columnamensajes">
+            <div class="row">
+                <h3>Mensajes Enviados</h3>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tema</th>
+                                <th>Mensaje</th>
+                                <th>ID Enviador</th>
+                                <th>Fecha</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="m in $ctrl.mensajes">
+                                <td>{{$index + 1}}</td>
+                                <td>{{ m.tema }}</td>
+                                <td>{{ m.texto }}</td>
+                                <td>
+                                    {{m.id_usuario}}
+                                </td>
+                                <td>{{ m.fecha }}</td>
+                                <td >
+                                    
+                                    <button type="button" class="btn btn-sm btn-danger" data-ng-click="$ctrl.borrarMensaje(m.id)" >Borrar</button>
+                                </td>
+                            </tr>
+
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+    
+</div>

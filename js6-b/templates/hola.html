@@ -1,0 +1,76 @@
+
+
+
+<div class="sidebar" data-ng-if="$ctrl.autenticado()">
+
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus icon'></i>
+        <div class="logo_name">Bienvenido</div>
+        <i class='bx bx-menu' id="btn"  data-ng-click="$ctrl.mostrar()"></i>
+    </div>
+
+
+
+    
+
+
+
+    <ul class="nav-list">
+      
+      <li>
+        <a href="#!/posts">
+          <i class='bx bx-book-content'></i>
+          <span class="links_name">Muro</span>
+        </a>
+         <span class="tooltip">Muro</span>
+      </li>
+      <li>
+       <a href="#!/amigos">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">Amigos</span>
+       </a>
+       <span class="tooltip">Amigos</span>
+     </li>
+     <li>
+       <a href="#!/mensajes">
+         <i class='bx bx-chat' ></i>
+         <span class="links_name">Mensajes</span>
+       </a>
+       <span class="tooltip">Mensajes</span>
+     </li>
+     <li>
+       <a href="#!/galeria">
+         <i class='bx bx-images'></i>
+         <span class="links_name">Galeria</span>
+       </a>
+       <span class="tooltip">Galeria</span>
+     </li>
+     <li>
+       <a data-ng-click="$ctrl.mostrarMisPosts('/misposts')">
+         <i class='bx bx-library'></i>
+         <span class="links_name">Mis Posts</span>
+       </a>
+       <span class="tooltip">Mis Posts</span>
+     </li>
+     
+     
+     <li>
+       <a href="#!/configuracion">
+         <i class='bx bx-cog' ></i>
+         <span class="links_name">Configuración</span>
+       </a>
+       <span class="tooltip">Configuración</span>
+     </li>
+     <li class="profile">
+         <div class="profile-details">
+           <!--<img src="profile.jpg" alt="profileImg">-->
+           <div class="name_job">
+             <!--<div class="name">Prem Shahi</div>-->
+             <div class="salir" data-ng-click="$ctrl.salir()">Cerrar Cesión</div>
+           </div>
+         </div>
+         <i class='bx bx-log-out' id="log_out" data-ng-click="$ctrl.salir()"></i>
+     </li>
+    </ul>
+  </div>
+

@@ -1,0 +1,167 @@
+
+        <!--<div class="col-md-4">
+<div class="container">
+    <div class="row">-->
+
+<div id='wrapper' style='text-align: center;'>
+    <div class="py-5 text-center">
+                <h2>Galeria</h2>
+    </div>
+    
+    
+        <div class="box" style='display: inline-block; vertical-align: top;' data-ng-repeat="img in $ctrl.imagen" >
+            <div class="imgBx">
+                <img data-ng-attr-src="{{img.foto}}">
+            </div>
+            
+            <div class="content" class="portfolio-info portfolio-1">
+                        <h2>{{img.nombre}}<br><span>{{img.descripcion}}</span></h2>
+                        
+                        
+                        <a role="button" class="preview-link" title="Editar">
+                          <i class="bx bxs-edit"></i>
+                        </a>
+                        <a role="button" class="details-link" title="Borrar">
+                          <i class="bx bx-trash"></i>
+                        </a>
+            </div>
+        </div>
+    
+        <div class="box" style='display: inline-block; vertical-align: top;'>
+        
+            <div class="imgBx">
+                <img src="imagenes/pinguin.png">
+            </div>
+            <div class="content">
+                <h2>Jhon Doe<br><span>Creative Designer</span></h2>
+            </div>
+        </div>
+    </div>
+    <!--
+    <table class="table table-bordered table-hover table-condensed pre-scrollable">
+        <thead>
+            <tr>
+                
+                
+                <th class="col-6"><strong>Nombre</strong></th>
+                <th class="col-6"><strong>Imagen</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="img in $ctrl.imagen">
+                
+                <td>{{ img.nombre }}</td>
+                <td><img src="{{img.foto}}"></td>
+            </tr>
+        </tbody>
+    </table>
+    -->
+    
+    
+    <div class="text-center mt-3">
+        <button class="btn btn-sm btn-primary" type="button" data-ng-click="$ctrl.nuevaImagen={}" data-ng-disabled="$ctrl.nuevaImagen!=null">Cargar Nueva Imagen</button>
+        <button class="btn btn-sm btn-secondary" type="button">Borrar Imagen</button>
+    </div>
+    <br>
+<br>
+
+</div>
+
+
+<span>
+    <hr>
+    <div class="row" data-ng-if="$ctrl.nuevaImagen">
+        <div class="col-md-12">
+            
+            <h4 class="mb-3" data-ng-if="!$ctrl.nuevaImagen.id">Subir nueva imagen</h4>
+            <!--
+            <form class="needs-validation" novalidate name="formulario">
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="apellido">Nombre</label>
+                        <input  type="text" class="form-control" id="temaInput" data-ng-model="$ctrl.nuevaImagen.nombre" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar un nombre
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="nombre">Descripcion</label>
+                        <input type="text" class="form-control"  name="descripcion" id="descripcion" data-ng-model="$ctrl.nuevaImagen.descripcion" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar una descripcion
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="nombre">Destinatarios</label>
+                        <input type="text" class="form-control"  name="destinatarios" id="destinatarios" data-ng-model="$ctrl.nuevaImagen.destinatarios" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar destinatario/s
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                        <label for="apellido">URL</label>
+                        <input type="text" data-ng-model="$ctrl.nuevaImagen.foto" name="url_foto" class="form-control" rows="5" id="mensajeInput" placeholder="URL de la foto" ></input>
+                        <div class="invalid-feedback">
+                            Debe ingresar una url de una foto
+
+
+                        </div>
+                </div> 
+                
+                
+                    
+               
+                
+            </form>
+        -->
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <!--class="needs-validation" novalidate name="formulario">-->
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="apellido">Nombre</label>
+                        <input  type="text" class="form-control" name="name" id="temaInput" data-ng-model="$ctrl.nuevaImagen.nombre" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar un nombre
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="nombre">Descripcion</label>
+                        <input type="text" class="form-control"  name="descripcion" id="descripcion" data-ng-model="$ctrl.nuevaImagen.descripcion" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar una descripcion
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    Seleccione el archivo de imagen que desea subir:
+                    <!--<input type="file" name="file" id="fileToUpload" value="Elegir Imagen">-->
+                    <label for="file-upload" class="custom-file-upload">
+                        Cargar imagen
+                    </label>
+                    <input id="file-upload" type="file" name="files" />
+                    
+                    <!--<input type="submit" name="Upload Image" value="submit">-->
+                    <!--<button type="submit" class="like" name="submit" value="submit" data-ng-click="$ctrl.nuevaImagen={}">Subir</button>
+                    <button id="cargado_listo"  data-ng-if="$ctrl.CargadoImagen" class="like" style="background-color:MediumSeaGreen;">Cargado listo</button>-->
+                </div>
+                <br>
+                <button   class="btn btn-primary" data-ng-click="$ctrl.guardarImagen()" name="submit" type="submit" value="Upload File" data-ng-disabled="formulario.$invalid" " >Guardar</button>
+                <button class="btn btn-secondary" type="button" data-ng-click="$ctrl.nuevaImagen=null">Descartar</button>
+            </form>
+            
+            
+        </div>
+    </div>
+</span>
+

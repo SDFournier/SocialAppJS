@@ -1,0 +1,16 @@
+<main class="form-signin">
+  <form>
+    <h1 class="h3 mb-3 fw-normal text-center">Autenticación</h1>
+    <div class="mb-3">
+      <label for="email">E-mail</label>
+      <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" data-ng-model="$ctrl.login.email">
+    </div>
+    <div>
+      <label for="clave">Clave</label>
+      <input type="password" class="form-control" id="clave" placeholder="Clave" data-ng-model="$ctrl.login.clave">
+    </div>
+    <br>
+    <button class="w-100 btn btn-md btn-primary" type="button" data-ng-click="$ctrl.ingresar()">Ingresar</button>
+  </form>
+  <a href="#!/registro">Quiero registrarme</a>
+</main>

@@ -1,0 +1,41 @@
+    <div id='wrapper' style='text-align: center;'>
+        
+    <div class="py-5 text-center">
+                <h2>MURO</h2>
+    
+    
+        <div class="boxPost" data-ng-repeat="post in $ctrl.posts track by post.id" style='display: inline-block; vertical-align: top;'>
+        
+            <div class="imgBx">
+                <img data-ng-attr-src="{{post.path_imagen}}" alt="{{img.descripcion}}">
+                <div class="postCarta">
+                    <h2>{{post.titulo}}<br><span>{{post.texto}}</span></h2>
+                </div>
+            </div>
+            <div class="textoImagen">
+                <div class="subImagen">
+                    <p>{{post.descripcion}}</p>
+                </div>
+                
+                <div class="subCarta">
+                    <div class="cont_subtitulo">
+                        <h2 data-ng-click="$ctrl.redirigirAPostAmigo(post.id_usuario_amigo)">{{post.nombre}}<br></h2>
+                    </div>
+                    <div class="cont_perfil">
+                        <div class="perfil_c2">
+                            <div class="profile_detalles_fotito">
+                            <img class="css-border" data-ng-attr-src="{{post.foto_perfil}}" />
+                            <div class="usuario">
+                                
+                                
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+                
+        </div>
+            </div>
+        </div>
+    </div>
+    </div>

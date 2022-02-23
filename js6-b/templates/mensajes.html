@@ -1,0 +1,116 @@
+
+<div class="container">
+    <div class="row">
+        <!-- ============================================ BANDEJA DE SALIDA ====================================================== -->
+        <div class="columnamensajes">
+            <div class="row">
+                <h3>Bandeja de salida</h3>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tema</th>
+                                <th>Mensaje</th>
+                                <th>Destinatarios</th>
+                                <th>Fecha</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="m in $ctrl.mensajes">
+                                <td>{{$index + 1}}</td>
+                                <td>{{ m.tema }}</td>
+                                <td>{{ m.texto }}</td>
+                                <td>
+                                    <span data-ng-repeat="d in m.destinatarios_id" class="label label-primary dst" >{{m.destinatarios_nombre}}</span>
+                                </td>
+                                <td>{{ m.fecha }}</td>
+                                <td >
+                                    
+                                    <button type="button" class="btn btn-sm btn-danger" data-ng-click="$ctrl.borrarMensaje(m.id)" >Borrar</button>
+                                </td>
+                            </tr>
+
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- ============================================ BANDEJA DE ENTRADA ====================================================== -->
+        <div class="columnamensajes">
+            <div class="row">
+                <h3>Bandeja de Entrada</h3>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tema</th>
+                                <th>Mensaje</th>
+                                <th>Origen</th>
+                                <th>Fecha</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="m in $ctrl.mensajesRecibidos">
+                                <td>{{$index + 1}}</td>
+                                <td>{{ m.tema }}</td>
+                                <td>{{ m.texto }}</td>
+                                <td>
+                                    <span data-ng-repeat="d in m.destinatarios_id" class="label label-primary dst" >{{m.nombre_enviador}}</span>
+                                </td>
+                                <td>{{ m.fecha }}</td>
+                                <td >
+                                    
+                                    <button type="button" class="btn btn-sm btn-danger" data-ng-click="$ctrl.borrarMensaje(m.id)" >Borrar</button>
+                                </td>
+                            </tr>
+
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="columnamensajes">
+            
+            <!-- ============================================ FORMULARIO NUEVO MENSAJE ====================================================== -->
+            <h4>Nuevo Mensaje:</h4>
+            <form name="formMensaje">
+                <div class="form-group">
+                    <label for="destinatariosInput">Tema:</label> 
+                    <input data-ng-model="$ctrl.nuevoMensaje.tema" type="text" class="form-control" rows="5" id="temaInput" placeholder="Tema" required></input>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label for="destinatariosInput">Destinatarios:</label> 
+                    <input data-ng-model="$ctrl.nuevoMensaje.destinatarios" type="text" class="form-control" rows="5" id="temaInput" placeholder="Destinatarios" required></input>
+                </div>
+            -->
+                <div class="form-group">
+                    <label for="destinatariosInput">Destinatarios:</label> <small>(CTRL + clic para selección múltiple)</small>
+                    <select data-ng-options="c.id as c.nombre for c in $ctrl.contactos track by c.id" data-ng-model="$ctrl.nuevoMensaje.destinatarios" class="form-control" id="destinatariosInput"  required size="5">
+                       
+                    </select>
+                    
+                </div>
+                <div class="form-group3">
+                    <label for="mensajeInput">Mensaje:</label>
+                    <textarea data-ng-model="$ctrl.nuevoMensaje.texto" class="form-control" rows="5" id="mensajeInput" placeholder="Texto del mensaje" required></textarea>
+                </div>
+                
+                <button type="submit" data-ng-disabled="formMensaje.$invalid" data-ng-click="$ctrl.enviarMensaje()" class="btn btn-primary">Enviar</button>&nbsp;
+                <span role="button" data-ng-click="$ctrl.cancelarMensaje()" class="btn btn-default">Descartar</span>
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<span>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="mb-3" data-ng-if="$ctrl.nuevoContacto.id">Perfil de usuario</h4>
+            <h4 class="mb-3" data-ng-if="!$ctrl.nuevoContacto.id">Configuración</h4>
+            <form class="needs-validation" novalidate name="formulario">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="clave">Nueva clave</label>
+                        <input type="password" class="form-control" data-ng-class="{'is-invalid': formulario.clave.$invalid &&  formulario.clave.$dirty }" name="clave" id="clave" data-ng-model="$ctrl.perfil.clave" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar un clave
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="repetirClave">Repetir clave</label>
+                        <input type="password" class="form-control" data-ng-class="{'is-invalid': formulario.repetirClave.$invalid &&  formulario.repetirClave.$dirty }" name="repetirClave" id="repetirClave" data-ng-model="$ctrl.perfil.repetirClave" data-ng-disabled="$ctrl.perfil.clave==null || $ctrl.perfil.clave==''" data-ng-required="$ctrl.perfil.clave!=null && $ctrl.perfil.clave!=''">
+                        <div class="invalid-feedback">
+                            Debe ingresar un clave
+                        </div>
+                        <div class="invalid-feedback" data-ng-if="$ctrl.perfil.clave!=null && $ctrl.perfil.clave!='' && $ctrl.perfil.clave!=$ctrl.perfil.repetirClave">
+                            Las claves ingresadas no son iguales
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="button" data-ng-disabled="formulario.$invalid || $ctrl.perfil.clave!=null && $ctrl.perfil.clave!='' && $ctrl.perfil.clave!=$ctrl.perfil.repetirClave" data-ng-click="$ctrl.guardar()">Guardar</button>
+                <button class="btn btn-secondary" type="button" data-ng-click="$ctrl.perfil=null">Descartar</button>
+            </form>
+            <form class="needs-validation" novalidate name="formulario">
+                <br> 
+                <hr>
+                <br> 
+
+                <div class="mb-3">
+                        <label for="apellido">URL de la foto de perfil</label>
+                        <input type="text"  name="url_foto" class="form-control" rows="5" id="mensajeInput" placeholder="URL de la foto" data-ng-model="$ctrl.nuevaImagenPerfil.path_imagen"></input>
+                        <div class="invalid-feedback">
+                            Debe ingresar una url de una foto
+
+
+                        </div>
+                        <br> 
+                        <button   class="btn btn-primary" data-ng-click="$ctrl.guardarImagen()" name="submit" type="submit"  data-ng-disabled="formulario.$invalid" " >Guardar</button>
+                </div> 
+                
+                
+                    
+               
+                
+            </form>
+
+            <hr>
+            <div data-ng-if="$ctrl.quienSoy==99">
+                <label for="apellido">Opciones de administrador</label>
+                <br>
+                <button   class="btn btn-primary" data-ng-click="$ctrl.controlarPosts()" name="submit" type="submit"  data-ng-disabled="formulario.$invalid" " >Controlar Posts</button>
+
+                <button   class="btn btn-primary" data-ng-click="$ctrl.controlarMensajes()" name="submit" type="submit"  data-ng-disabled="formulario.$invalid" " >Controlar Mensajes </button>
+
+                <button   class="btn btn-primary" data-ng-click="$ctrl.cambiarEstilo()" name="submit" type="submit"  data-ng-disabled="formulario.$invalid" " >Cambiar estilo</button>
+            <div>
+
+
+        </div>
+    </div>
+</span>

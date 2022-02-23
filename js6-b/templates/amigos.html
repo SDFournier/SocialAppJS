@@ -1,0 +1,47 @@
+<span>
+    <div class="row">
+    	<div class="col-md-12 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Contactos</span>
+                <span class="badge badge-secondary badge-pill">{{ $ctrl.amigos.length }}</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed" data-ng-repeat="c in $ctrl.amigos track by c.id" data-ng-class="{'bg-light': $index%2 }">
+                    <div>
+                        <h6 class="my-0" data-ng-click="$ctrl.irAlPerfil(c.id)">{{ c.nombre }}</h6>
+                        <small class="text-muted">{{ c.email }}</small>
+                    </div>
+                    <span class="text-muted" ><!--data-ng-if="c.editable"-->
+                        
+                        <button type="button" class="btn btn-sm btn-danger" data-ng-click="$ctrl.eliminar(c.id)" data-ng-disabled="$ctrl.nuevoContacto!=null && $ctrl.nuevoContacto.id==c.id">Eliminar</button>
+                    </span>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-primary" data-ng-click="$ctrl.ocultar={}" data-ng-disabled="$ctrl.ocultar!=null">Agregar Contacto</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row" data-ng-if="$ctrl.ocultar">
+        <div class="col-md-12">
+            <h4 class="mb-3" data-ng-if="$ctrl.nuevoContacto.id">Edición de contacto</h4>
+            <h4 class="mb-3" data-ng-if="!$ctrl.nuevoContacto.id">Nuevo contacto</h4>
+            <form class="needs-validation" novalidate name="formulario">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre">E-mail</label>
+                        <input type="text" class="form-control" data-ng-class="{'is-invalid': formulario.nombre.$invalid &&  formulario.nombre.$dirty }" name="nombre" id="nombre" data-ng-model="$ctrl.nuevoContacto.email" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar un E-mail
+                        </div>
+                    </div>
+                </div>
+            
+                <br>
+                <br>
+
+                <button class="btn btn-primary" type="button" data-ng-disabled="formulario.$invalid" data-ng-click="$ctrl.guardar()">Guardar</button>
+                <button class="btn btn-secondary" type="button" data-ng-click="$ctrl.ocultar=null">Descartar</button>
+            </form>
+        </div>
+    </div>
+</span>

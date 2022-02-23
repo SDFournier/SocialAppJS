@@ -1,0 +1,111 @@
+    <div id='wrapper' style='text-align: center;'>
+    <div class="py-5 text-center ">
+                <h2>Posts De {{ $ctrl.nombreUsuario.nombre }}</h2>
+    
+    
+        <div class="boxPost" data-ng-repeat="post in $ctrl.posts track by post.id" style='display: inline-block; vertical-align: top;'>
+        
+            <div class="imgBx">
+                <img data-ng-attr-src="{{post.path_imagen}}" alt="{{img.descripcion}}" data-ng-click="$ctrl.sonMisPosts()">
+                <div class="postCarta">
+                    <h2>{{post.titulo}}<br><span>{{post.texto}}</span></h2>
+                </div>
+            </div>
+            <div class="textoImagen">
+                <div class="subImagen">
+                    <p>{{post.descripcion}}</p>
+                </div>
+                
+                <div class="content" class="portfolio-info portfolio-1" style='padding-right:38px' >
+                    <h2>{{post.nombre}}<br></h2>
+                    <div data-ng-if="post.id_usuario_amigo==$ctrl.quienSoy">
+                        <!--<a class="EdicionFotoBtn" role="button" class="details-link"  title="Privado" 
+                        data-ng-click="$ctrl.compartirPost(post.id)">
+
+                          <i class='bx bxs-binoculars' ></i>
+                        </a>-->
+                        <a class="EdicionFotoBtn" role="button" class="details-link" title="Borrar" data-ng-click="$ctrl.borrarPost(post.id)" >
+                          <i class="bx bx-trash"></i>
+                        </a>
+                    <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="text-center mt-3">
+        <button class="btn btn-sm btn-primary" type="button" data-ng-click="$ctrl.nuevaImagen={}" data-ng-disabled="$ctrl.nuevaImagen!=null">Crear Nuevo Post</button>
+        
+    </div>
+    <br>
+<br>
+
+</div>
+
+
+<span>
+    <hr>
+    <div class="row" data-ng-if="$ctrl.nuevaImagen">
+        <div class="col-md-12">
+            
+            <h4 class="mb-3" data-ng-if="!$ctrl.nuevaImagen.id">Imagen</h4>
+            
+            <form class="needs-validation" novalidate name="formulario">
+                
+
+                <div class="mb-3">
+                        <label for="apellido">URL</label>
+                        <input type="text"  name="url_foto" class="form-control" rows="5" id="mensajeInput" placeholder="URL de la foto" data-ng-model="$ctrl.nuevoPost.path_imagen"></input>
+                        <div class="invalid-feedback">
+                            Debe ingresar una url de una foto
+
+
+                        </div>
+                </div> 
+                
+                
+                    
+               
+                
+            </form>
+        
+            
+            <form name="formImagen">                <!--class="needs-validation" novalidate name="formulario">-->
+                
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="nombre">Descripcion</label>
+                        <input type="text" class="form-control"  name="descripcion" id="descripcion" data-ng-model="$ctrl.nuevoPost.descripcion" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar una descripcion
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mb-3" data-ng-if="!$ctrl.nuevaImagen.id">Texto</h4>
+                <div class="row">
+                <div class="col-md-5 mb-3">
+                    <label for="destinatariosInput">Titulo</label> 
+                    <input data-ng-model="$ctrl.nuevoPost.titulo" type="text" class="form-control" rows="5" id="temaInput" placeholder="Tema" required></input>
+                </div>
+                </div>
+               
+                <div class="form-group3">
+                    <label for="mensajeInput">Cuerpo</label>
+                    <textarea data-ng-model="$ctrl.nuevoPost.texto" class="form-control" rows="5" id="mensajeInput" placeholder="Texto del mensaje" required></textarea>
+                </div>
+
+
+
+                
+                <br>
+                <button   class="btn btn-primary" data-ng-click="$ctrl.guardarPost()" name="submit" type="submit"  data-ng-disabled="formulario.$invalid" " >Guardar</button>
+                <button class="btn btn-secondary" type="button" data-ng-click="$ctrl.nuevaImagen=null">Descartar</button>
+            </form>
+            
+            
+        </div>
+    </div>
+</span>
+
+    </div>

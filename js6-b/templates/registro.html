@@ -1,0 +1,27 @@
+<span>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="mb-3">Registro de usuarios</h4>
+            <form class="needs-validation" novalidate name="formulario">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" data-ng-class="{'is-invalid': formulario.email.$invalid &&  formulario.email.$dirty }" name="email" id="email" data-ng-model="$ctrl.nuevoUsuario.email" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar una dirección de E-mail
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="clave">Clave de acceso</label>
+                        <input type="password" class="form-control" data-ng-class="{'is-invalid': formulario.clave.$invalid &&  formulario.clave.$dirty }" name="clave" id="clave" data-ng-model="$ctrl.nuevoUsuario.clave" required>
+                        <div class="invalid-feedback">
+                            Debe ingresar una clave
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="button" data-ng-disabled="formulario.$invalid" data-ng-click="$ctrl.registrar()">Registrarme</button>
+                <button class="btn btn-secondary" type="button" data-ng-click="$ctrl.cancelar()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</span>
